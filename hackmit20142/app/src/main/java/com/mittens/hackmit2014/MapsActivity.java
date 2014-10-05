@@ -10,14 +10,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener {
+import java.util.ArrayList;
+
+public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener{
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    private LatLng[] bathrooms = new LatLng[10];
+    private ArrayList<LatLng> bathrooms = new ArrayList<LatLng>();
+    private ArrayList<String> names = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bathrooms[0] = new LatLng(42.358383, -71.096413);
+        bathrooms.add( new LatLng(42.358383, -71.096413));
+        names.add("Johnson Ice Rink");
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
     }
@@ -64,16 +68,17 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
      */
     private void setUpMap() {
 
+        mMap.setOnInfoWindowClickListener(this);
         mMap.setMyLocationEnabled(true);
-        GoogleMap.setOnMarkerClickListener(this);
-        //MIT nigga
-        mMap.addMarker(new MarkerOptions().position(bathrooms[0]).title("Johnson Ice Rink"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bathrooms[0],15));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(3), 2000, null);
+
+        //MIT... nigga.
+        mMap.addMarker(new MarkerOptions().position(bathrooms.get(0)).title(names.get(0)).snippet("(Click for path)"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bathrooms.get(0),15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(27), 2000, null);
     }
 
     @Override
-    public boolean onMarkerClick(Marker marker) {
-        return false;
+    public void onInfoWindowClick(Marker marker) {
+
     }
 }
