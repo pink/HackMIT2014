@@ -11,16 +11,27 @@
             android:scaleType="fitXY"/>
 
     <Button
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click to start"
-        android:id="@+id/startbutton"
-        android:layout_marginBottom="63dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+
+        android:background="@drawable/nice_button"
+
+        android:text="Gotta go?"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:shadowRadius="1"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowColor="@android:color/black"
+        android:layout_marginBottom="77dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="false"
-        android:typeface="sans"
-        android:onClick="sendMessage"
-        android:visibility="visible" />
+        android:paddingLeft="40px"
+        android:singleLine="false"
+        android:paddingRight="40px"
+        android:paddingTop="15px"
+        android:paddingBottom="15px" />
 
 </RelativeLayout>

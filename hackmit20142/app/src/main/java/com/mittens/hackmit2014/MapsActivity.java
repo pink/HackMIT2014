@@ -33,14 +33,39 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bathrooms.add(new LatLng(42.358383, -71.096413));
         bathrooms.add( new LatLng(42.358482, -71.096110));
         bathrooms.add(new LatLng(42.361617, -71.090856));
         bathrooms.add(new LatLng(42.359185, -71.093136));
-        names.add("Johnson Ice Rink");
-        names.add("Johnson Bathroom");
+        bathrooms.add(new LatLng(42.358581, -71.095877));
+        bathrooms.add(new LatLng(42.359500, -71.095523));
+        bathrooms.add(new LatLng(42.359453, -71.094804));
+        bathrooms.add(new LatLng(42.359104, -71.094954));
+        bathrooms.add(new LatLng(42.359960, -71.097454));
+        bathrooms.add(new LatLng(42.358065, -71.094890));
+        bathrooms.add(new LatLng(42.361942, -71.091746));
+        bathrooms.add(new LatLng(42.361617, -71.090019));
+        bathrooms.add(new LatLng(42.360745, -71.089750));
+        bathrooms.add(new LatLng(42.360967, -71.087701));
+        bathrooms.add(new LatLng(42.360372, -71.087336));
+        bathrooms.add(new LatLng(42.361688, -71.088731));
+        bathrooms.add(new LatLng(42.360396, -71.084343));
+        names.add("Johnson Athletic Center");
         names.add("Ray and Maria Stata Center");
         names.add("MIT School of Architecture");
+        names.add("Zesiger S&F Center");
+        names.add("du Pont Athletic Gym");
+        names.add("du Pont Athletic Center");
+        names.add("Stratton Student Center");
+        names.add("Francis Bitter Magnet Lab");
+        names.add("Kresge Auditorium");
+        names.add("Brain & Cognitive Sciences Complex");
+        names.add("Ray and Marla Stata Center");
+        names.add("Whitaker Building");
+        names.add("Wiesner Building");
+        names.add("Media Lab Extension");
+        names.add("Koch Biology Building");
+        names.add("Tang Center");
+
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
     }
