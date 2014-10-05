@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener{
-
+    private List<Polyline> polylines = new ArrayList<Polyline>();
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private ArrayList<LatLng> bathrooms = new ArrayList<LatLng>();
     private ArrayList<String> names = new ArrayList<String>();
@@ -96,7 +96,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
             results = new float[1];
             Location.distanceBetween(gps.latitude, gps.longitude,
                     bathrooms.get(i).latitude, bathrooms.get(i).longitude, results);
-            mMap.addMarker(new MarkerOptions().position(bathrooms.get(i)).title(names.get(i)).snippet("Distance: " + results[0] + "/n(Click for path)"));
+            mMap.addMarker(new MarkerOptions().position(bathrooms.get(i)).title(names.get(i)).snippet("Distance: " + Math.round(results[0]) + "m\n(Click for path)"));
 
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bathrooms.get(0), 15));
@@ -163,9 +163,14 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
     }
 
     public void drawPath(String  result) {
-        Log.d("got to drawPath", "");
+
         try {
-            Log.d("inside draw", "");
+            for(Polyline line : polylines)
+            {
+                line.remove();
+            }
+
+            polylines.clear();
             //Tranform the string into a json object
             final JSONObject json = new JSONObject(result);
             JSONArray routeArray = json.getJSONArray("routes");
@@ -181,10 +186,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                         .add(new LatLng(src.latitude, src.longitude), new LatLng(dest.latitude,   dest.longitude))
                         .width(9)
                         .color(Color.RED).geodesic(true));
+                polylines.add(line);
             }
 
         }
-        catch (JSONException e) {
+        catch (Exception e) {
 
         }
     }
