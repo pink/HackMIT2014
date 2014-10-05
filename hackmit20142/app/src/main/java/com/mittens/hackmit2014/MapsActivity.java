@@ -3,18 +3,21 @@ package com.mittens.hackmit2014;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity {
+public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-
+    private LatLng[] bathrooms = new LatLng[10];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bathrooms[0] = new LatLng(42.358383, -71.096413);
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
     }
@@ -61,12 +64,16 @@ public class MapsActivity extends FragmentActivity {
      */
     private void setUpMap() {
 
+        mMap.setMyLocationEnabled(true);
+        GoogleMap.setOnMarkerClickListener(this);
+        //MIT nigga
+        mMap.addMarker(new MarkerOptions().position(bathrooms[0]).title("Johnson Ice Rink"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bathrooms[0],15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(3), 2000, null);
+    }
 
-
-        //College Park
-        mMap.addMarker(new MarkerOptions().position(new LatLng(42.367021, -71.101493)).title("Marker"));
-
-        //Random place on equator
-        mMap.addMarker(new MarkerOptions().position(new LatLng(76.554, 0)).title("Marker"));
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
     }
 }
