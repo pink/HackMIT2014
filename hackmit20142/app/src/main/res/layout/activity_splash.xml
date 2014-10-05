@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.mittens.hackmit2014.splash">
+
+        <ImageView
+            android:src="@drawable/flush_mit_splash"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click to start"
+        android:id="@+id/startbutton"
+        android:layout_marginBottom="63dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="false"
+        android:typeface="sans"
+        android:onClick="sendMessage"
+        android:visibility="visible" />
+
+</RelativeLayout>

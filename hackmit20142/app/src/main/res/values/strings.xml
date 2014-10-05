@@ -3,5 +3,8 @@
 
     <string name="app_name">hackmit2014</string>
     <string name="title_activity_maps">flushMIT</string>
+    <string name="title_activity_splash">flushMIT</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
