@@ -32,6 +32,7 @@
         android:singleLine="false"
         android:paddingRight="40px"
         android:paddingTop="15px"
-        android:paddingBottom="15px" />
+        android:paddingBottom="15px"
+        android:onClick="sendMessage"/>
 
 </RelativeLayout>
